@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Proyecto Parte 1 - Mario Herrero</string>
+
+    <string name="name1">Mario</string>
+    <string name="surname1">Herrero Crucera</string>
+    <string name="email1">always.haxe@gmail.com</string>
+    <string name="phone1">+34 611 480 475</string>
+    <string name="identity1">1234</string>
+</resources>
