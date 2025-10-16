@@ -4,10 +4,10 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
 data class Usuario(
-    @StringRes val stringResourceNameID: Int,
-    @StringRes val stringResourceSurnameID: Int,
-    @StringRes val stringResourceEmailID: Int,
-    @StringRes val stringResourcePhoneID: Int,
-    @StringRes val stringResourceIdentityID: Int,
+    val id: Int,
+    val name: String,
+    val surname: String,
+    val email: String,
+    val phoneNumber: String,
     @DrawableRes val imageResourceID: Int
 )
