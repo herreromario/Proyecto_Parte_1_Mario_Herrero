@@ -20,7 +20,16 @@ class MainActivity : ComponentActivity() {
         setContent {
             ProyectoParte1MarioHerreroTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ListarPedidos(modifier = Modifier.padding(innerPadding))
+                    PantallaUsuario(modifier = Modifier.padding(innerPadding))
+
+                    /** PARA PROBAR PANTALLAS SUSTITUIT POR -> PantallaUsuario
+                     *                                         ListarPedidos
+                     *                                         DetallePedido
+                     *                                         RealizarPedido
+                     *                                         FormularioPago
+                     *                                         ResumenPago
+                     *
+                     *  **/
                 }
             }
         }
