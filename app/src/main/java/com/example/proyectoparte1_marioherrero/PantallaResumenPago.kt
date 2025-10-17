@@ -13,6 +13,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -24,18 +25,11 @@ import com.example.proyectoparte1_marioherrero.datos.Data
 fun ResumenPago(
     modifier: Modifier = Modifier,
 ) {
-    // VARIABLES DE PEDIDO (MISMA LÓGICA QUE EN LISTAR PEDIDOS)
-
     val pedidos = Data().cargarPedidos()
     val pedido = pedidos.first { it.id == 3 } // Pedido de ejemplo
 
-    // COLORES PERSONALIZADOS
-
     val rojoPrincipal = Color(0xFFE53935)
     val grisFondo = Color(0xFFF5F5F5)
-
-
-    // ESTRUCTURA PRINCIPAL
 
     Column(
         modifier = modifier
@@ -46,9 +40,7 @@ fun ResumenPago(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-
         // CONTENIDO PRINCIPAL
-
         Column(
             modifier = Modifier
                 .weight(1f)
@@ -56,28 +48,28 @@ fun ResumenPago(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            // --- TÍTULO ---
+            // --- Título ---
             Text(
-                text = "🧾 Resumen del pago",
+                text = stringResource(R.string.titulo_resumen_pago),
                 fontSize = 26.sp,
                 fontWeight = FontWeight.Bold,
                 color = rojoPrincipal,
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            // --- IMAGEN ---
+            // --- Imagen ---
             Image(
                 painter = painterResource(id = R.drawable.stiker_pagado__2_),
-                contentDescription = "Pago completado",
+                contentDescription = stringResource(R.string.descripcion_pago_completado),
                 modifier = Modifier
                     .size(180.dp)
                     .padding(bottom = 12.dp),
                 contentScale = ContentScale.Fit
             )
 
-            // --- TEXTO DE CONFIRMACIÓN ---
+            // --- Texto de confirmación ---
             Text(
-                text = "¡Pedido Realizado!",
+                text = stringResource(R.string.texto_pedido_realizado),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
@@ -85,7 +77,7 @@ fun ResumenPago(
 
             Spacer(modifier = Modifier.height(18.dp))
 
-            // --- TARJETA DE RESUMEN ---
+            // --- Tarjeta de resumen ---
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -98,7 +90,7 @@ fun ResumenPago(
                 ) {
 
                     Text(
-                        text = "Pedido #${pedido.id}",
+                        text = stringResource(R.string.texto_pedido_numero, pedido.id),
                         fontWeight = FontWeight.Bold,
                         fontSize = 18.sp,
                         color = rojoPrincipal
@@ -106,15 +98,30 @@ fun ResumenPago(
 
                     Spacer(modifier = Modifier.height(10.dp))
 
-                    Text(text = ("🍕 ${pedido.pizzaCount}x ${pedido.pizzaType} (${pedido.pizzaSize})"), fontSize = 16.sp)
-                    Text(text = "🥤 ${pedido.drinkCount}x ${pedido.drink}", fontSize = 16.sp)
+                    Text(
+                        text = stringResource(
+                            R.string.texto_detalle_pizza,
+                            pedido.pizzaCount,
+                            pedido.pizzaType,
+                            pedido.pizzaSize
+                        ),
+                        fontSize = 16.sp
+                    )
+                    Text(
+                        text = stringResource(
+                            R.string.texto_detalle_bebida,
+                            pedido.drinkCount,
+                            pedido.drink
+                        ),
+                        fontSize = 16.sp
+                    )
                     Spacer(modifier = Modifier.height(10.dp))
 
                     Divider(color = Color.LightGray, thickness = 1.dp)
                     Spacer(modifier = Modifier.height(10.dp))
 
                     Text(
-                        text = "Importe pagado: ${"%.2f".format(pedido.totalPrice)} €",
+                        text = stringResource(R.string.texto_importe_pagado, pedido.totalPrice),
                         fontWeight = FontWeight.SemiBold,
                         fontSize = 17.sp
                     )
@@ -123,9 +130,9 @@ fun ResumenPago(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // --- MENSAJE FINAL ---
+            // --- Mensaje final ---
             Text(
-                text = "🎉 Enhorabuena",
+                text = stringResource(R.string.texto_enhorabuena),
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
                 color = Color.Black
@@ -134,15 +141,13 @@ fun ResumenPago(
             Spacer(modifier = Modifier.height(6.dp))
 
             Text(
-                text = "Tu pedido #${pedido.id} se ha procesado con éxito.",
+                text = stringResource(R.string.texto_pedido_procesado, pedido.id),
                 fontSize = 16.sp,
                 textAlign = TextAlign.Center
             )
         }
 
-
-        // BOTONES INFERIORES
-
+        // --- Botones inferiores ---
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -150,7 +155,7 @@ fun ResumenPago(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
 
-            // --- BOTÓN CONTINUAR ---
+            // --- Botón continuar ---
             Box(
                 modifier = Modifier
                     .weight(1f)
@@ -161,7 +166,7 @@ fun ResumenPago(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Continuar",
+                    text = stringResource(R.string.boton_continuar),
                     color = Color.White,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold
@@ -170,7 +175,7 @@ fun ResumenPago(
 
             Spacer(modifier = Modifier.width(12.dp))
 
-            // --- BOTÓN FACTURA ---
+            // --- Botón factura ---
             Box(
                 modifier = Modifier
                     .weight(1f)
@@ -181,7 +186,7 @@ fun ResumenPago(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Factura",
+                    text = stringResource(R.string.boton_factura),
                     color = Color.White,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold

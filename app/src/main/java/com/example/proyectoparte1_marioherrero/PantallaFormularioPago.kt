@@ -12,45 +12,37 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.proyectoparte1_marioherrero.R
 
 @Composable
 fun FormularioPago(
     modifier: Modifier = Modifier,
-    total: Double = 25.50 // Le puedo pasar la cantidad desde otra pantalla
+    total: Double = 25.50 // Cantidad por defecto
 ) {
-
-
-    // VARIABLES DE ESTADO
 
     var tipoTarjeta by remember { mutableStateOf("VISA") }
     var numeroTarjeta by remember { mutableStateOf("") }
     var fechaValidez by remember { mutableStateOf("") }
     var codigoSeguridad by remember { mutableStateOf("") }
 
-
-    // COLORES PERSONALIZADOS
-
     val rojoPrincipal = Color(0xFFE53935)
-
-
-    // ESTRUCTURA PRINCIPAL
 
     Column(
         modifier = modifier
             .fillMaxSize()
             .background(Color.White)
             .padding(16.dp),
-        verticalArrangement = Arrangement.SpaceBetween, // deja el botón fijo abajo
+        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
         // FORMULARIO DE PAGO
-
         Column(
             modifier = Modifier
                 .weight(1f)
@@ -58,9 +50,9 @@ fun FormularioPago(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            // --- TÍTULO ---
+            // --- Título ---
             Text(
-                text = "💳 Formulario de pago",
+                text = stringResource(R.string.titulo_formulario_pago),
                 fontSize = 26.sp,
                 fontWeight = FontWeight.Bold,
                 color = rojoPrincipal,
@@ -68,10 +60,14 @@ fun FormularioPago(
             )
 
             // --- Tipo de tarjeta ---
-            Text("Tipo de tarjeta:", fontWeight = FontWeight.SemiBold)
+            Text(stringResource(R.string.texto_tipo_tarjeta), fontWeight = FontWeight.SemiBold)
             Spacer(modifier = Modifier.height(6.dp))
 
-            val tiposTarjeta = listOf("VISA", "MasterCard", "EURO 6000")
+            val tiposTarjeta = listOf(
+                stringResource(R.string.tarjeta_visa),
+                stringResource(R.string.tarjeta_mastercard),
+                stringResource(R.string.tarjeta_euro6000)
+            )
 
             Column(modifier = Modifier.fillMaxWidth()) {
                 tiposTarjeta.forEach { tipo ->
@@ -97,14 +93,14 @@ fun FormularioPago(
             Spacer(modifier = Modifier.height(14.dp))
 
             // --- Número de tarjeta ---
-            Text("Número de la tarjeta:", fontWeight = FontWeight.SemiBold)
+            Text(stringResource(R.string.texto_numero_tarjeta), fontWeight = FontWeight.SemiBold)
             Spacer(modifier = Modifier.height(6.dp))
 
             OutlinedTextField(
                 value = numeroTarjeta,
                 onValueChange = { if (it.length <= 19) numeroTarjeta = it },
-                placeholder = { Text("1234 5678 9101 2134") },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), // // Abro teclado numérico
+                placeholder = { Text(stringResource(R.string.placeholder_numero_tarjeta)) },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 singleLine = true,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -121,22 +117,20 @@ fun FormularioPago(
 
                 // --- Fecha de validez ---
                 Column(modifier = Modifier.weight(1f)) {
-                    Text("Fecha de validez:", fontWeight = FontWeight.SemiBold)
+                    Text(stringResource(R.string.texto_fecha_validez), fontWeight = FontWeight.SemiBold)
                     Spacer(modifier = Modifier.height(6.dp))
 
                     OutlinedTextField(
                         value = fechaValidez,
                         onValueChange = {
-                            var texto = it.filter { c -> c.isDigit() } // solo números
-                            // Insertar "/" automáticamente después de los 2 primeros dígitos
+                            var texto = it.filter { c -> c.isDigit() }
                             if (texto.length > 2 && !texto.contains("/")) {
                                 texto = texto.substring(0, 2) + "/" + texto.substring(2)
                             }
                             if (texto.length <= 5) fechaValidez = texto
                         },
-
-                        placeholder = { Text("MM/AA") },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), // Abro teclado numérico
+                        placeholder = { Text(stringResource(R.string.placeholder_fecha_validez)) },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         singleLine = true,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -146,14 +140,14 @@ fun FormularioPago(
 
                 Spacer(modifier = Modifier.width(12.dp))
 
-                // --- Código dfe seguridad ---
+                // --- Código de seguridad ---
                 Column(modifier = Modifier.weight(1f)) {
-                    Text("Código de seguridad:", fontWeight = FontWeight.SemiBold)
+                    Text(stringResource(R.string.texto_codigo_seguridad), fontWeight = FontWeight.SemiBold)
                     Spacer(modifier = Modifier.height(6.dp))
                     OutlinedTextField(
                         value = codigoSeguridad,
                         onValueChange = { if (it.length <= 3) codigoSeguridad = it },
-                        placeholder = { Text("123") },
+                        placeholder = { Text(stringResource(R.string.placeholder_codigo_seguridad)) },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         singleLine = true,
                         modifier = Modifier
@@ -167,9 +161,7 @@ fun FormularioPago(
             HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
         }
 
-
         // BOTÓN PROCEDER CON EL PAGO
-
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -180,7 +172,7 @@ fun FormularioPago(
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "💰 Proceder con el pago (${total} €)",
+                text = stringResource(R.string.boton_proceder_pago, total),
                 color = Color.White,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,

@@ -1,4 +1,93 @@
 <resources>
     <string name="app_name">Proyecto Parte 1 - Mario Herrero</string>
 
+    <!-- Pantalla Inicial -->
+    <string name="titulo_pregunta">¿Qué deseas hacer?</string>
+    <string name="boton_realizar_pedido">Realizar un pedido</string>
+    <string name="boton_listar_pedidos">Listar pedidos</string>
+
+
+    <!-- Pantalla Listar Pedidos -->
+    <string name="titulo_lista_pedidos">Lista de pedidos</string>
+    <string name="texto_pedido_numero">Pedido #%1$d</string>
+    <string name="texto_detalle_pizza">🍕 %1$d× %2$s (%3$s)</string>
+    <string name="texto_detalle_bebida">🥤 %1$d× %2$s</string>
+    <string name="texto_total_precio">💰 Total: %1$.2f €</string>
+    <string name="texto_fecha_pedido">📅 Fecha: %1$s</string>
+    <string name="boton_ver_detalles">Ver detalles</string>
+
+
+    <!-- Pantalla Detalle Pedido -->
+    <string name="titulo_detalle_pedido">Detalle del pedido</string>
+    <string name="titulo_datos_usuario">Datos del usuario</string>
+
+    <string name="etiqueta_fecha">Fecha</string>
+    <string name="etiqueta_tipo_pizza">Tipo de pizza</string>
+    <string name="etiqueta_opcion_pizza">Opción</string>
+    <string name="etiqueta_tamano_pizza">Tamaño</string>
+    <string name="etiqueta_cantidad_pizza">Cantidad</string>
+    <string name="etiqueta_bebida">Bebida</string>
+
+    <string name="etiqueta_nombre">Nombre</string>
+    <string name="etiqueta_correo">Correo</string>
+    <string name="etiqueta_telefono">Teléfono</string>
+
+
+
+    <!-- Pantalla Realizar Pedido -->
+    <string name="titulo_realizar_pedido">🍕 Realizar pedido</string>
+    <string name="texto_selecciona_pizza">Selecciona tu pizza</string>
+
+    <string name="pizza_barbacoa">Barbacoa</string>
+    <string name="pizza_romana">Romana</string>
+    <string name="pizza_margarita">Margarita</string>
+
+    <string name="opcion_cerdo">Carne de cerdo</string>
+    <string name="opcion_pollo">Pollo</string>
+    <string name="opcion_ternera">Ternera</string>
+    <string name="opcion_con_champinones">Con champiñones</string>
+    <string name="opcion_sin_champinones">Sin champiñones</string>
+    <string name="opcion_con_pina">Con piña</string>
+    <string name="opcion_sin_pina">Sin piña</string>
+    <string name="opcion_vegana">Vegana</string>
+
+    <string name="tamano_pequena">Pequeña</string>
+    <string name="tamano_mediana">Mediana</string>
+    <string name="tamano_grande">Grande</string>
+    <string name="texto_precio_pizza">%1$.2f €</string>
+
+    <string name="etiqueta_cantidad_pizza_plural">Cantidad de pizzas</string>
+    <string name="bebida_agua">Agua</string>
+    <string name="bebida_cola">Cola</string>
+    <string name="bebida_sin">Sin bebida</string>
+    <string name="etiqueta_cantidad_bebida">Cantidad de bebidas</string>
+
+
+    <!--  Pantalla Formulario Pago -->
+    <string name="titulo_formulario_pago">💳 Formulario de pago</string>
+    <string name="texto_tipo_tarjeta">Tipo de tarjeta:</string>
+    <string name="tarjeta_visa">VISA</string>
+    <string name="tarjeta_mastercard">MasterCard</string>
+    <string name="tarjeta_euro6000">EURO 6000</string>
+
+    <string name="texto_numero_tarjeta">Número de la tarjeta:</string>
+    <string name="placeholder_numero_tarjeta">1234 5678 9101 2134</string>
+    <string name="texto_fecha_validez">Fecha de validez:</string>
+    <string name="placeholder_fecha_validez">MM/AA</string>
+    <string name="texto_codigo_seguridad">Código de seguridad:</string>
+    <string name="placeholder_codigo_seguridad">123</string>
+
+    <string name="boton_proceder_pago">💰 Proceder con el pago (%1$.2f €)</string>
+
+
+    <!-- Pantalla Resumen Pago -->
+    <string name="titulo_resumen_pago">🧾 Resumen del pago</string>
+    <string name="descripcion_pago_completado">Pago completado</string>
+    <string name="texto_pedido_realizado">¡Pedido realizado!</string>
+    <string name="texto_importe_pagado">Importe pagado: %1$.2f €</string>
+    <string name="texto_enhorabuena">🎉 Enhorabuena</string>
+    <string name="texto_pedido_procesado">Tu pedido #%1$d se ha procesado con éxito.</string>
+    <string name="boton_continuar">Continuar</string>
+    <string name="boton_factura">Factura</string>
+
 </resources>

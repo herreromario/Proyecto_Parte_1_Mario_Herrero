@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -27,7 +28,7 @@ fun ListarPedidos(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Lista de pedidos",
+            text = stringResource(R.string.titulo_lista_pedidos),
             style = TextStyle(
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Bold
@@ -36,7 +37,7 @@ fun ListarPedidos(modifier: Modifier = Modifier) {
         )
 
         LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(12.dp), // Separación vertical entre pedidos
+            verticalArrangement = Arrangement.spacedBy(12.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
             items(pedidos) { pedido ->
@@ -51,19 +52,19 @@ fun TarjetaPedido(pedido: Pedido, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 4.dp), // Separación horizontal de las tarjetas
+            .padding(horizontal = 4.dp),
         shape = RoundedCornerShape(12.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp), // Sombreado de la tarjeta
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
         colors = CardDefaults.cardColors(containerColor = Color(0xFFFDFDFD))
     ) {
         Column(
             modifier = Modifier
                 .padding(16.dp)
                 .fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(6.dp) // Separación entre los textos
+            verticalArrangement = Arrangement.spacedBy(6.dp)
         ) {
             Text(
-                text = "Pedido #${pedido.id}",
+                text = stringResource(R.string.texto_pedido_numero, pedido.id),
                 style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold
@@ -71,14 +72,27 @@ fun TarjetaPedido(pedido: Pedido, modifier: Modifier = Modifier) {
                 color = Color(0xFFB71C1C)
             )
 
-            Text(text = "🍕 ${pedido.pizzaCount}x ${pedido.pizzaType} (${pedido.pizzaSize})")
-            Text(text = "🥤 ${pedido.drinkCount}x ${pedido.drink}")
             Text(
-                text = "💰 Total: ${pedido.totalPrice} €",
+                text = stringResource(
+                    R.string.texto_detalle_pizza,
+                    pedido.pizzaCount,
+                    pedido.pizzaType,
+                    pedido.pizzaSize
+                )
+            )
+            Text(
+                text = stringResource(
+                    R.string.texto_detalle_bebida,
+                    pedido.drinkCount,
+                    pedido.drink
+                )
+            )
+            Text(
+                text = stringResource(R.string.texto_total_precio, pedido.totalPrice),
                 fontWeight = FontWeight.Medium
             )
             Text(
-                text = "📅 Fecha: ${pedido.date}",
+                text = stringResource(R.string.texto_fecha_pedido, pedido.date),
                 color = Color.Gray,
                 fontSize = 14.sp
             )
@@ -91,7 +105,7 @@ fun TarjetaPedido(pedido: Pedido, modifier: Modifier = Modifier) {
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.align(Alignment.End)
             ) {
-                Text(text = "Ver detalles", fontSize = 16.sp)
+                Text(text = stringResource(R.string.boton_ver_detalles), fontSize = 16.sp)
             }
         }
     }

@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">Project Part 1 - Mario Herrero</string>
+
+    <!-- Home Screen -->
+    <string name="titulo_pregunta">What would you like to do?</string>
+    <string name="boton_realizar_pedido">Place an order</string>
+    <string name="boton_listar_pedidos">List orders</string>
+
+    <!-- Orders List Screen -->
+    <string name="titulo_lista_pedidos">Orders list</string>
+    <string name="texto_pedido_numero">Order #%1$d</string>
+    <string name="texto_detalle_pizza">🍕 %1$d× %2$s (%3$s)</string>
+    <string name="texto_detalle_bebida">🥤 %1$d× %2$s</string>
+    <string name="texto_total_precio">💰 Total: €%1$.2f</string>
+    <string name="texto_fecha_pedido">📅 Date: %1$s</string>
+    <string name="boton_ver_detalles">View details</string>
+
+    <!-- Order Details Screen -->
+    <string name="titulo_detalle_pedido">Order details</string>
+    <string name="titulo_datos_usuario">User information</string>
+
+    <string name="etiqueta_fecha">Date</string>
+    <string name="etiqueta_tipo_pizza">Pizza type</string>
+    <string name="etiqueta_opcion_pizza">Option</string>
+    <string name="etiqueta_tamano_pizza">Size</string>
+    <string name="etiqueta_cantidad_pizza">Quantity</string>
+    <string name="etiqueta_bebida">Drink</string>
+
+    <string name="etiqueta_nombre">Name</string>
+    <string name="etiqueta_correo">Email</string>
+    <string name="etiqueta_telefono">Phone</string>
+
+    <!-- Place Order Screen -->
+    <string name="titulo_realizar_pedido">🍕 Place order</string>
+    <string name="texto_selecciona_pizza">Select your pizza</string>
+
+    <string name="pizza_barbacoa">Barbecue</string>
+    <string name="pizza_romana">Roman</string>
+    <string name="pizza_margarita">Margherita</string>
+
+    <string name="opcion_cerdo">Pork</string>
+    <string name="opcion_pollo">Chicken</string>
+    <string name="opcion_ternera">Beef</string>
+    <string name="opcion_con_champinones">With mushrooms</string>
+    <string name="opcion_sin_champinones">Without mushrooms</string>
+    <string name="opcion_con_pina">With pineapple</string>
+    <string name="opcion_sin_pina">Without pineapple</string>
+    <string name="opcion_vegana">Vegan</string>
+
+    <string name="tamano_pequena">Small</string>
+    <string name="tamano_mediana">Medium</string>
+    <string name="tamano_grande">Large</string>
+    <string name="texto_precio_pizza">€%1$.2f</string>
+
+    <string name="etiqueta_cantidad_pizza_plural">Number of pizzas</string>
+    <string name="bebida_agua">Water</string>
+    <string name="bebida_cola">Cola</string>
+    <string name="bebida_sin">No drink</string>
+    <string name="etiqueta_cantidad_bebida">Number of drinks</string>
+
+    <!-- Payment Form Screen -->
+    <string name="titulo_formulario_pago">💳 Payment form</string>
+    <string name="texto_tipo_tarjeta">Card type:</string>
+    <string name="tarjeta_visa">VISA</string>
+    <string name="tarjeta_mastercard">MasterCard</string>
+    <string name="tarjeta_euro6000">EURO 6000</string>
+
+    <string name="texto_numero_tarjeta">Card number:</string>
+    <string name="placeholder_numero_tarjeta">1234 5678 9101 2134</string>
+    <string name="texto_fecha_validez">Expiry date:</string>
+    <string name="placeholder_fecha_validez">MM/YY</string>
+    <string name="texto_codigo_seguridad">Security code:</string>
+    <string name="placeholder_codigo_seguridad">123</string>
+
+    <string name="boton_proceder_pago">💰 Proceed to payment (€%1$.2f)</string>
+
+    <!-- Payment Summary Screen -->
+    <string name="titulo_resumen_pago">🧾 Payment summary</string>
+    <string name="descripcion_pago_completado">Payment completed</string>
+    <string name="texto_pedido_realizado">Order placed!</string>
+    <string name="texto_importe_pagado">Amount paid: €%1$.2f</string>
+    <string name="texto_enhorabuena">🎉 Congratulations</string>
+    <string name="texto_pedido_procesado">Your order #%1$d has been successfully processed.</string>
+    <string name="boton_continuar">Continue</string>
+    <string name="boton_factura">Invoice</string>
+
+</resources>

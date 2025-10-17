@@ -11,10 +11,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.proyectoparte1_marioherrero.R
 import com.example.proyectoparte1_marioherrero.datos.Data
 
 @Composable
@@ -23,9 +25,6 @@ fun RealizarPedido(modifier: Modifier = Modifier) {
     val data = Data()
     val precios = data.obtenerPrecios()
 
-    // -------------------------------
-    // VARIABLES DE ESTADO
-    // -------------------------------
     var tipoPizza by remember { mutableStateOf("Barbacoa") }
     var opcionPizza by remember { mutableStateOf("") }
     var tamañoPizza by remember { mutableStateOf("Mediana") }
@@ -33,9 +32,6 @@ fun RealizarPedido(modifier: Modifier = Modifier) {
     var bebida by remember { mutableStateOf("Agua") }
     var cantidadBebida by remember { mutableIntStateOf(1) }
 
-    // -------------------------------
-    // CÁLCULO DEL PRECIO TOTAL
-    // -------------------------------
     val precioTotal by remember(
         tipoPizza, opcionPizza, tamañoPizza, cantidadPizza, bebida, cantidadBebida
     ) {
@@ -49,25 +45,20 @@ fun RealizarPedido(modifier: Modifier = Modifier) {
         )
     }
 
-    // -------------------------------
-    // COLORES PERSONALIZADOS
-    // -------------------------------
     val rojoPrincipal = Color(0xFFE53935)
     val grisClaro = Color(0xFFF5F5F5)
     val marronCola = Color(0xFF795548)
 
-    // Distribución general: el contenido principal y el precio abajo fijo
     Column(
         modifier = modifier
             .fillMaxSize()
             .background(Color.White)
             .padding(16.dp),
-        verticalArrangement = Arrangement.SpaceBetween, // separa el contenido y el precio
+        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
         // CONTENIDO PRINCIPAL
-
         Column(
             modifier = Modifier
                 .weight(1f)
@@ -77,7 +68,7 @@ fun RealizarPedido(modifier: Modifier = Modifier) {
 
             // --- Título ---
             Text(
-                text = "🍕 Realizar pedido",
+                text = stringResource(R.string.titulo_realizar_pedido),
                 fontSize = 26.sp,
                 fontWeight = FontWeight.Bold,
                 color = rojoPrincipal,
@@ -85,13 +76,13 @@ fun RealizarPedido(modifier: Modifier = Modifier) {
             )
 
             // --- Tipo de pizza ---
-            Text("Selecciona tu pizza", fontWeight = FontWeight.SemiBold)
+            Text(stringResource(R.string.texto_selecciona_pizza), fontWeight = FontWeight.SemiBold)
             Spacer(modifier = Modifier.height(8.dp))
 
             val tiposPizza = listOf(
-                "Barbacoa" to Color(0xFFFF7043),
-                "Romana" to Color(0xFF66BB6A),
-                "Margarita" to Color(0xFF42A5F5)
+                stringResource(R.string.pizza_barbacoa) to Color(0xFFFF7043),
+                stringResource(R.string.pizza_romana) to Color(0xFF66BB6A),
+                stringResource(R.string.pizza_margarita) to Color(0xFF42A5F5)
             )
 
             Row(
@@ -119,13 +110,24 @@ fun RealizarPedido(modifier: Modifier = Modifier) {
 
             // --- Opciones según tipo de pizza ---
             val opcionesPizza = when (tipoPizza) {
-                "Barbacoa" -> listOf("Carne de cerdo", "Pollo", "Ternera")
-                "Romana" -> listOf("Con champiñones", "Sin champiñones")
-                "Margarita" -> listOf("Con piña", "Sin piña", "Vegana")
+                stringResource(R.string.pizza_barbacoa) -> listOf(
+                    stringResource(R.string.opcion_cerdo),
+                    stringResource(R.string.opcion_pollo),
+                    stringResource(R.string.opcion_ternera)
+                )
+                stringResource(R.string.pizza_romana) -> listOf(
+                    stringResource(R.string.opcion_con_champinones),
+                    stringResource(R.string.opcion_sin_champinones)
+                )
+                stringResource(R.string.pizza_margarita) -> listOf(
+                    stringResource(R.string.opcion_con_pina),
+                    stringResource(R.string.opcion_sin_pina),
+                    stringResource(R.string.opcion_vegana)
+                )
                 else -> emptyList()
             }
 
-            Text("Opción:", fontWeight = FontWeight.SemiBold)
+            Text(stringResource(R.string.etiqueta_opcion_pizza), fontWeight = FontWeight.SemiBold)
             Spacer(modifier = Modifier.height(6.dp))
 
             Column {
@@ -150,13 +152,13 @@ fun RealizarPedido(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(10.dp))
 
             // --- Tamaño de pizza ---
-            Text("Tamaño:", fontWeight = FontWeight.SemiBold)
+            Text(stringResource(R.string.etiqueta_tamano_pizza), fontWeight = FontWeight.SemiBold)
             Spacer(modifier = Modifier.height(6.dp))
 
             val tamaños = listOf(
-                "Pequeña" to precios.pizzaPequeña,
-                "Mediana" to precios.pizzaMediana,
-                "Grande" to precios.pizzaGrande
+                stringResource(R.string.tamano_pequena) to precios.pizzaPequeña,
+                stringResource(R.string.tamano_mediana) to precios.pizzaMediana,
+                stringResource(R.string.tamano_grande) to precios.pizzaGrande
             )
 
             Row(
@@ -182,7 +184,7 @@ fun RealizarPedido(modifier: Modifier = Modifier) {
                             color = if (tamañoPizza == nombre) rojoPrincipal else Color.Black
                         )
                         Text(
-                            text = "${precio} €",
+                            text = stringResource(R.string.texto_precio_pizza, precio),
                             fontSize = 12.sp,
                             color = Color.Gray
                         )
@@ -193,7 +195,7 @@ fun RealizarPedido(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(10.dp))
 
             // --- Cantidad de pizzas ---
-            Text("Cantidad de pizzas:", fontWeight = FontWeight.SemiBold)
+            Text(stringResource(R.string.etiqueta_cantidad_pizza_plural), fontWeight = FontWeight.SemiBold)
             Spacer(modifier = Modifier.height(6.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Button(
@@ -219,13 +221,13 @@ fun RealizarPedido(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(14.dp))
 
             // --- Bebidas ---
-            Text("Bebida:", fontWeight = FontWeight.SemiBold)
+            Text(stringResource(R.string.etiqueta_bebida), fontWeight = FontWeight.SemiBold)
             Spacer(modifier = Modifier.height(6.dp))
 
             val bebidas = listOf(
-                "Agua" to Color(0xFF4FC3F7),
-                "Cola" to marronCola, // ahora marrón
-                "Sin bebida" to Color(0xFFBDBDBD)
+                stringResource(R.string.bebida_agua) to Color(0xFF4FC3F7),
+                stringResource(R.string.bebida_cola) to marronCola,
+                stringResource(R.string.bebida_sin) to Color(0xFFBDBDBD)
             )
 
             Row(
@@ -253,10 +255,9 @@ fun RealizarPedido(modifier: Modifier = Modifier) {
                 }
             }
 
-            // --- Solo muestra contador si hay bebida ---
-            if (bebida != "Sin bebida") {
+            if (bebida != stringResource(R.string.bebida_sin)) {
                 Spacer(modifier = Modifier.height(10.dp))
-                Text("Cantidad de bebidas:", fontWeight = FontWeight.SemiBold)
+                Text(stringResource(R.string.etiqueta_cantidad_bebida), fontWeight = FontWeight.SemiBold)
                 Spacer(modifier = Modifier.height(6.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Button(
@@ -282,9 +283,7 @@ fun RealizarPedido(modifier: Modifier = Modifier) {
             Divider(color = Color.LightGray, thickness = 1.dp)
         }
 
-
         // PRECIO TOTAL
-
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -294,7 +293,7 @@ fun RealizarPedido(modifier: Modifier = Modifier) {
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "💰 Total: %.2f €".format(precioTotal),
+                text = stringResource(R.string.texto_total_precio, precioTotal),
                 color = Color.White,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
@@ -303,5 +302,3 @@ fun RealizarPedido(modifier: Modifier = Modifier) {
         }
     }
 }
-
-

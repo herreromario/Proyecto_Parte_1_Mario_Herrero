@@ -22,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -42,15 +43,14 @@ fun PantallaUsuario(modifier: Modifier = Modifier) {
         TarjetaUsuario(usuario = usuario)
 
         Spacer(modifier = Modifier.height(40.dp))
-
         PreguntarOpciones()
     }
 }
 
-
 @Composable
 fun TarjetaUsuario(usuario: Usuario, modifier: Modifier = Modifier) {
-    Card(modifier = Modifier,
+    Card(
+        modifier = modifier,
         colors = CardDefaults.cardColors(
             containerColor = Color.Transparent
         )
@@ -92,7 +92,7 @@ fun PreguntarOpciones(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "¿Qué deseas hacer?",
+            text = stringResource(R.string.titulo_pregunta),
             modifier = Modifier.padding(bottom = 20.dp),
             style = TextStyle(
                 fontSize = 40.sp,
@@ -113,7 +113,7 @@ fun BotonesOpciones() {
             .padding(20.dp)
             .size(width = 250.dp, height = 70.dp)
     ) {
-        Text(text = "Realizar un pedido", fontSize = 20.sp)
+        Text(text = stringResource(R.string.boton_realizar_pedido), fontSize = 20.sp)
     }
 
     Button(
@@ -124,6 +124,6 @@ fun BotonesOpciones() {
             .padding(20.dp)
             .size(width = 250.dp, height = 70.dp)
     ) {
-        Text(text = "Listar pedidos", fontSize = 20.sp)
+        Text(text = stringResource(R.string.boton_listar_pedidos), fontSize = 20.sp)
     }
 }

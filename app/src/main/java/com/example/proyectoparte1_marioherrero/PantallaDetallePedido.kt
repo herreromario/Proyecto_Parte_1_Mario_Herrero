@@ -6,6 +6,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -28,7 +29,7 @@ fun DetallePedido(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Detalle del pedido",
+            text = stringResource(R.string.titulo_detalle_pedido),
             style = TextStyle(
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Bold
@@ -57,7 +58,7 @@ fun TarjetaDetallePedido(modifier: Modifier = Modifier, pedido: Pedido) {
                 .padding(20.dp)
         ) {
             Text(
-                text = "Pedido #${pedido.id}",
+                text = stringResource(R.string.texto_pedido_numero, pedido.id),
                 fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.fillMaxWidth(),
@@ -66,18 +67,16 @@ fun TarjetaDetallePedido(modifier: Modifier = Modifier, pedido: Pedido) {
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            DetalleTexto("Fecha", pedido.date)
-            DetalleTexto("Tipo de pizza", pedido.pizzaType)
-
-            // Mostrar opción personalizada (si la hay)
+            DetalleTexto(stringResource(R.string.etiqueta_fecha), pedido.date)
+            DetalleTexto(stringResource(R.string.etiqueta_tipo_pizza), pedido.pizzaType)
 
             pedido.pizzaOptions?.let {
-                DetalleTexto("Opción", it)
+                DetalleTexto(stringResource(R.string.etiqueta_opcion_pizza), it)
             }
 
-            DetalleTexto("Tamaño", pedido.pizzaSize)
-            DetalleTexto("Cantidad", pedido.pizzaCount.toString())
-            DetalleTexto("Bebida", "${pedido.drink} (${pedido.drinkCount})")
+            DetalleTexto(stringResource(R.string.etiqueta_tamano_pizza), pedido.pizzaSize)
+            DetalleTexto(stringResource(R.string.etiqueta_cantidad_pizza), pedido.pizzaCount.toString())
+            DetalleTexto(stringResource(R.string.etiqueta_bebida), "${pedido.drink} (${pedido.drinkCount})")
 
             HorizontalDivider(
                 modifier = Modifier.padding(vertical = 8.dp),
@@ -86,7 +85,7 @@ fun TarjetaDetallePedido(modifier: Modifier = Modifier, pedido: Pedido) {
             )
 
             Text(
-                text = "Total: ${pedido.totalPrice}",
+                text = stringResource(R.string.texto_total_precio, pedido.totalPrice),
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.align(Alignment.End)
@@ -110,7 +109,7 @@ fun TarjetaDatosUsuario(modifier: Modifier = Modifier, usuario: Usuario) {
                 .padding(20.dp)
         ) {
             Text(
-                text = "Datos del usuario",
+                text = stringResource(R.string.titulo_datos_usuario),
                 fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.fillMaxWidth(),
@@ -119,9 +118,9 @@ fun TarjetaDatosUsuario(modifier: Modifier = Modifier, usuario: Usuario) {
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            DetalleTexto("Nombre", "${usuario.name} ${usuario.surname}")
-            DetalleTexto("Correo", usuario.email)
-            DetalleTexto("Teléfono", usuario.phoneNumber)
+            DetalleTexto(stringResource(R.string.etiqueta_nombre), "${usuario.name} ${usuario.surname}")
+            DetalleTexto(stringResource(R.string.etiqueta_correo), usuario.email)
+            DetalleTexto(stringResource(R.string.etiqueta_telefono), usuario.phoneNumber)
         }
     }
 }

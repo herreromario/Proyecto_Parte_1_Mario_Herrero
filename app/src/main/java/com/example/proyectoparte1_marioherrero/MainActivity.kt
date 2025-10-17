@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ProyectoParte1MarioHerreroTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ResumenPago(modifier = Modifier.padding(innerPadding))
+                    ListarPedidos(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
