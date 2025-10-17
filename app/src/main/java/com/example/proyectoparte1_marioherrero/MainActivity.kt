@@ -8,8 +8,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import com.example.proyectoparte1_marioherrero.ui.theme.FormularioPago
 import com.example.proyectoparte1_marioherrero.ui.theme.ProyectoParte1MarioHerreroTheme
 import com.example.proyectoparte1_marioherrero.ui.theme.RealizarPedido
+import com.example.proyectoparte1_marioherrero.ui.theme.ResumenPago
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ProyectoParte1MarioHerreroTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    RealizarPedido(modifier = Modifier.padding(innerPadding))
+                    ResumenPago(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
